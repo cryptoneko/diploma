@@ -1,9 +1,9 @@
 \section{Задача}
 
 \begin{equation*}
-  \mathbb{P}\left\{ x_i = f\left( i \right) \right\}
+  \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
-    \frac{\exp{\left\{- \frac{\left( t_i - f\left( i \right) \right)^2}
+    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( t \right) \right)^2}
          {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}
   \to \max
 \end{equation*}
@@ -11,45 +11,45 @@
 \section{Розв'язок}
 
 \begin{equation*}
-  \ln{\left(\mathbb{P}\left\{ x_i = f\left( i \right) \right\}\right)}
+  \ln{\mathbb{P}\left( x \mid t \right)}
   = \sum_{i \in I}
     \left\{
-      - \frac{\left( t_i - f\left( i \right) \right)^2}{2 \cdot \sigma^2}
+      - \frac{\left( t_i - f_i\left( t \right) \right)^2}{2 \cdot \sigma^2}
       - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
     \right\}
   \to \max
 \end{equation*}
 
 \begin{equation*}
-  \sum_{i \in I} \left( t_i - f\left( i \right) \right)^2 \to \min
+  \sum_{i \in I} \left( t_i - f_i\left( t \right) \right)^2 \to \min
 \end{equation*}
 
 \begin{equation*}
-  \sum_{i \in I} \left( t_i - f\left( i \right) \right)^2
-  = \sum_{i \in F} \left( t_i - f\left( i \right) \right)^2
-  + \sum_{i \in I \setminus F} \left( t_i - f\left( i \right) \right)^2
+  \sum_{i \in I} \left( t_i - f_i\left( t \right) \right)^2
+  = \sum_{i \in F} \left( t_i - f_i\left( t \right) \right)^2
+  + \sum_{i \in I \setminus F} \left( t_i - f_i\left( t \right) \right)^2
 \end{equation*}
 
 \begin{equation*}
     \overline{\sigma_F^2}
-    = \frac{\sum\limits_{i \in F} \left( t_i - f\left( i \right) \right)^2}
+    = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( t \right) \right)^2}
            {\left| F - 1 \right|}
     \Rightarrow
     \overline{\sigma_F^2}
     \sim \frac{\sum\limits_{i \in I}
-                 \left( t_i - f\left( i \right) \right)^2}
+                 \left( t_i - f_i\left( t \right) \right)^2}
                {\left| I \right| - 1}
 \end{equation*}
 
 \begin{equation*}
-  \sum_{i \in I} \left( t_i - f\left( i \right) \right)^2
+  \sum_{i \in I} \left( t_i - f_i\left( t \right) \right)^2
   \sim \left( \left| I \right| - 1 \right) \cdot \overline{\sigma_F^2}
   \to \min
 \end{equation*}
 
 \begin{equation*}
   \overline{\sigma_F^2}
-  = \frac{\sum\limits_{i \in F} \left( t_i - f\left( i \right) \right)^2}
+  = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( t \right) \right)^2}
          {\left| F - 1 \right|}
   \to \min
 \end{equation*}
