@@ -88,6 +88,19 @@
 \end{equation*}
 
 \begin{equation*}
+  c = \left( 2 \cdot \pi \right)^{\frac{\left| I \right| + \left| P \right|}{2}}
+      \cdot \sigma^{\left| I \right|}
+\end{equation*}
+
+\begin{equation*}
+    \mathbb{P}\left( x \mid t \right)
+    = c
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( t \right) \right\|}
+                                {2 \cdot \sigma^2} \right\}}
+      \cdot \exp{\left\{ - \frac{\left\| x \right\|}{2} \right\}}
+\end{equation*}
+
+\begin{equation*}
   W \left( x, x' \right)
   = \left\| x - x' \right\|
   = \sum_{i \in I} \left( x_i - x'_i \right)^2
