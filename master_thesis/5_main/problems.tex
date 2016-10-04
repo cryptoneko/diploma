@@ -36,7 +36,7 @@
 \begin{equation*}
   W \left( x, x' \right)
   = \left\| x - x' \right\|
-  = \sum_{i \in I} \left( x_i - x'_i \right)^2
+  = \sum_{p \in P} \left( x_p - x'_p \right)^2
 \end{equation*}
 
 \begin{equation*}
@@ -80,11 +80,11 @@
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
-    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
+    \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
          {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}
     \cdot
     \prod_{p \in P}
-    \frac{\exp{\frac{-x_i^2}{2}}}{\sqrt{2 \cdot \pi}}
+    \frac{\exp{\left( - \frac{x_p^2}{2} \right)}}{\sqrt{2 \cdot \pi}}
 \end{equation*}
 
 \begin{equation*}
@@ -103,7 +103,7 @@
 \begin{equation*}
   W \left( x, x' \right)
   = \left\| x - x' \right\|
-  = \sum_{i \in I} \left( x_i - x'_i \right)^2
+  = \sum_{p \in P} \left( x_p - x'_p \right)^2
 \end{equation*}
 
 \begin{equation*}
