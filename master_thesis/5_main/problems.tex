@@ -14,7 +14,7 @@
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
-    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( t \right) \right)^2}
+    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
            {2 \cdot \sigma^2} \right\}}}
          {\sqrt{2 \cdot \pi \cdot \sigma^2}}
 \end{equation*}
@@ -80,7 +80,7 @@
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
-    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( t \right) \right)^2}
+    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
          {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}
     \cdot
     \prod_{p \in P}
@@ -95,7 +95,7 @@
 \begin{equation*}
     \mathbb{P}\left( x \mid t \right)
     = c
-      \cdot \exp{\left\{ - \frac{\left\| t - f\left( t \right) \right\|}
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|}
                                 {2 \cdot \sigma^2} \right\}}
       \cdot \exp{\left\{ - \frac{\left\| x \right\|}{2} \right\}}
 \end{equation*}
