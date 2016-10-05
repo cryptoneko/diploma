@@ -47,37 +47,25 @@
 \end{equation*}
 
 \subsection{Gaussian parameters difference}
+
+\begin{equation*}
+  \begin{split}
+    \overline{\sigma^2}
+      &= \sum_{x \in X} \frac{\left\| f\left( x \right) - t \right\|}{N}, \qquad
+      N = \left| X \right| \cdot \left| I \right| - 1 \\
+    D_t^2\left( x \right)
+      &= \frac{\left\| f\left( x \right) - t \right\|}
+              {2 \cdot \overline{\sigma^2}}
+  \end{split}
+\end{equation*}
+
 \begin{equation*}
   q'\left( t \right)
-  = \sum_{x \in X}
-    x
-    \cdot e^{- \left\| x \right\|}
-    \cdot \exp{\frac{\langle f\left(x\right),
-      t - \frac{f\left(x\right)}{2} \rangle}{\sigma^2}}
-\end{equation*}
-
-\begin{equation*}
-  N = \left| X \right| \cdot \left| I \right| - 1
-\end{equation*}
-
-\begin{equation*}
-  \overline{\sigma^2}
-  = \sum_{x \in X} \frac{\left\| f\left( x \right) - t \right\|}{N}
-\end{equation*}
-
-\begin{equation*}
-  \exp{\frac{\langle f\left(x\right),
-    t - \frac{f\left(x\right)}{2} \rangle}{\overline{\sigma^2}}}
-  = \exp{\frac{-N \cdot \left( \left\| f\left( x \right) - t \right\| + \left\| t \right\| \right)}
-              {2 \cdot \sum\limits_{x' \in X} \left\| f\left( x' \right) - t \right\|}}
-\end{equation*}
-
-
-\begin{equation*}
-  q''\left( t \right)
-  = \sum_{x \in X}
-    x
-    \cdot \exp{\left\{
-      - \frac{\left\| f\left( x' \right) - t \right\|}{2 \cdot \overline{\sigma^2}}
-      - \left\| x \right\| \right\}}
+  =
+  c \cdot
+  \sum_{x \in X}
+  x
+  \cdot \exp{\left\{
+    - D_t^2\left( x \right)
+    - \frac{\left\| x \right\|}{2} \right\}}
 \end{equation*}
