@@ -107,16 +107,11 @@
 \end{equation*}
 
 \begin{equation*}
-  c\left( t \right)
-  = c \cdot \exp{\left\{- \frac{\left\| t \right\|}{2 \cdot \sigma^2}\right\}}
-\end{equation*}
-
-\begin{equation*}
   q^* \left( t \right)
-  = c\left( t \right)
+  = c
     \cdot \sum_{x \in X}
       x
-      \cdot e^{- \left\| x \right\|}
-      \cdot \exp{\frac{\langle f\left(x\right),
-        t - \frac{f\left(x\right)}{2} \rangle}{\sigma^2}}
+      \cdot \exp{\left\{ - \frac{\left\| x \right\|}{2} \right\}}
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|}
+                                {2 \cdot \sigma^2} \right\}}
 \end{equation*}
