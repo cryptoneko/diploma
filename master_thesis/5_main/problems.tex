@@ -1,22 +1,56 @@
 \section{Задача}
 
+Маємо множину $T$ зображень.
+Кольори --- відтінки сірого, що визначаються лише інтенсивністю від $0$ до $1$.
+Введемо множину $I$ пікселів зображення.
+Зображення $t \in T$ є відображення з множини пікселів на множину їх значень
+\begin{equation*}
+  t: I \rightarrow \left[ 0; 1 \right].
+\end{equation*}
+Інтенсивність пікселя $i$ в зображенні $t$ позначимо як $t_i$.
+
+Взагалі кажучи, $I$ --- множина матриць однакового розміру.
+Зазвичай зображення можуть бути розміром від $100\times100=10^4$ пікселів.
+Проте в середньому це значення досягає мільйона пікселів.
+Це означає,
+що при використанні $2^8=256$ градацій сірого маємо приблизно
+$10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто неймовірно багато.
+
+Тривимірна модель обличчя визначається набором з $n$ дійсних параметрів.
+Позначимо їх через $x$.
+Множина всіх параметрів $X = \mathbb{R}^n$.
+Функцією, що перетворює набір параметрів на зображення, є відображення
+\begin{equation*}
+  f: X \rightarrow T.
+\end{equation*}
+
+Поставимо Байесовську задачу розпізнавання.
+Для цього потрібно визначитися з функцією витрат
+\cite{berger2013statistical}
+\begin{equation*}
+  W: X \times X \rightarrow \mathbb{R}
+\end{equation*}
+та мінімізувати її математичне очікування
 \begin{equation*}
   R \left( q \right)
   = \sum\limits_{t \in T} \sum\limits_{x \in X}
     \mathbb{P} \left( x,  q\left( t \right) \right)
-    \cdot W \left( x, q\left( t \right) \right)
+    \cdot W \left( x, q\left( t \right) \right).
 \end{equation*}
-
+Задача
 \begin{equation*}
-  q^* = \argmin_q R
+  q^* = \argmin_q R.
 \end{equation*}
 
+Введемо ймовірність того,
+що дане зображення $t$ було отримано саме з параметрами $x$.
+Вважаємо, що на зображенні присутній нормальний шум з дисперсією $\sigma^2$
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
     \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
            {2 \cdot \sigma^2} \right\}}}
-         {\sqrt{2 \cdot \pi \cdot \sigma^2}}
+           {\sqrt{2 \cdot \pi \cdot \sigma^2}}.
 \end{equation*}
 
 \subsection{Bin}
