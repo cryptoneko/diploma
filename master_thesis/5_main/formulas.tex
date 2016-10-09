@@ -43,12 +43,17 @@
 та гаусовим шумом на зображенні без інших додаткових умов,
 які буде розглянуто далі.
 
+Введемо множину пікселів $F \subset I$,
+які на зображенні $f\left( x \right)$ належать обличчю.
+Тоді суму можно розбити на дві
 \begin{equation*}
   \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2
   = \sum_{i \in F} \left( t_i - f_i\left( x \right) \right)^2
   + \sum_{i \in I \setminus F} \left( t_i - f_i\left( x \right) \right)^2
 \end{equation*}
-
+Рахуємо вибірковую дисперсію для тієї частини зображення,
+де зображено обличчя.
+Вважаємо, що вона приймає те ж значення для всього зображення
 \begin{equation*}
     \overline{\sigma_F^2}
     = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( x \right) \right)^2}
@@ -59,13 +64,14 @@
                  \left( t_i - f_i\left( x \right) \right)^2}
                {\left| I \right| - 1}
 \end{equation*}
-
+Тоді вираз, який треба мінімізувати, можна представити як
 \begin{equation*}
   \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2
   \sim \left( \left| I \right| - 1 \right) \cdot \overline{\sigma_F^2}
   \to \min
 \end{equation*}
-
+Оскільки розмір зображення фіксований,
+потрібно зменшити вибіркову дисперсію на пікселях обличчя
 \begin{equation*}
   \overline{\sigma_F^2}
   = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( x \right) \right)^2}
