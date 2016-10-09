@@ -90,14 +90,14 @@
   \mathbb{P}_I\left( x \mid t \right)
   = \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
-    {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}.
+    {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}.
 \end{equation*}
 Відомо, що параметри $x$ --- набори коефіцієнтів нормованих головних компонент,
 тобто мають стандартний гаусовий розподіл.
 Ймовірність того, что було згенеровано саме такий набір
 \begin{equation*}
   \mathbb{P}_X\left( x \mid t \right)
-  = \prod_{p \in P}
+  = \prod_{i=1}^n
     \frac{\exp{\left( - \frac{x_p^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
 Ймовірність того,
@@ -109,9 +109,9 @@
     \cdot \mathbb{P}_X\left( x \mid t \right)
   = \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
-         {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}
+         {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma_t^2}}
     \cdot
-    \prod_{p \in P}
+    \prod_{i=1}^n
     \frac{\exp{\left( - \frac{x_p^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
 Коли з контексту буде зрозуміло,
