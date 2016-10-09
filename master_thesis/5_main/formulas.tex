@@ -21,6 +21,9 @@
 якому саме зображенню належить дана дисперсія,
 індекс $t$ не будемо використовувати.
 
+Максимізуємо логарифм ймовірності,
+тому що це зручніше,
+ніж максимізація добутку кількох десятків тисяч або мільйонів значень
 \begin{equation*}
   \ln{\mathbb{P}\left( x \mid t \right)}
   = \sum_{i \in I}
@@ -28,11 +31,11 @@
       - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
       - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
     \right\}
-  \to \max
+  \to \max.
 \end{equation*}
-
+Позбуваємося константного доданку та помножимо на подвоєну ненульову дисперсію
 \begin{equation*}
-  \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2 \to \min
+  \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2 \to \min.
 \end{equation*}
 
 \begin{equation*}
