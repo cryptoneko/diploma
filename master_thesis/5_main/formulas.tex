@@ -82,6 +82,27 @@
 
 \subsection{Різниця параметрів з урахуванням їх гаусового розподілу}
 
+Вважаємо, що на даному зображенні $t$
+присутній нормальний шум з невідомою дисперсією $\sigma^2_t$.
+Ймовірність того, що зображення з конкретними параметрами $x$
+є очищеним від шумів зображенням $t$
+\begin{equation*}
+  \mathbb{P}_I\left( x \mid t \right)
+  = \prod_{i \in I}
+    \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
+    {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}.
+\end{equation*}
+Відомо, що параметри $x$ --- набори коефіцієнтів нормованих головних компонент,
+тобто мають стандартний гаусовий розподіл.
+Ймовірність того, что було згенеровано саме такий набір
+\begin{equation*}
+  \mathbb{P}_X\left( x \mid t \right)
+  = \prod_{p \in P}
+    \frac{\exp{\left( - \frac{x_p^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
+\end{equation*}
+Ймовірність того,
+що дане зображення $t$ було отримано саме з параметрами $x$,
+є добутком ймовірностей
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
   = \prod_{i \in I}
@@ -91,6 +112,9 @@
     \prod_{p \in P}
     \frac{\exp{\left( - \frac{x_p^2}{2} \right)}}{\sqrt{2 \cdot \pi}}
 \end{equation*}
+Коли з контексту буде зрозуміло,
+якому саме зображенню належить дана дисперсія,
+індекс $t$ не будемо використовувати.
 
 \begin{equation*}
   c = \left( 2 \cdot \pi \right)^{\frac{\left| I \right| + \left| P \right|}{2}}
