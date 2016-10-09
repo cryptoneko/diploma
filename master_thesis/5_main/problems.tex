@@ -136,7 +136,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
 отриманий шляхом методу головних компонент
 \begin{equation*}
   G_v\left( x \right) = \sum_{i \in 1}^n \alpha_i^v \cdot x_i,
-  \qquad v \in V
+  \qquad v \in V.
 \end{equation*}
 
 Функція витрат має вигляд
@@ -153,7 +153,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
     = \sum_{p \in P} \left\{ \left( x_p - x'_p \right)^2
       \cdot \sum_{v \in V} \left( \alpha_p^v \right)^2 \right\} = \\
     = \left| \beta_p^2 = \sum_{v \in V} \left( \alpha_p^v \right)^2 \right|
-    = \sum_{p \in P} \beta_p^2 \cdot \left( x_p - x'_p \right)^2
+    = \sum_{p \in P} \beta_p^2 \cdot \left( x_p - x'_p \right)^2.
   \end{split}
 \end{equation*}
 
@@ -166,7 +166,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
         \mathbb{P} \left( x \;\middle|\;  t \right)
         \cdot \sum_{i = 1}^n \beta_i^2 \cdot \left( x'_i - x_i \right)^2
       \right]
-    \right\}
+    \right\}.
 \end{equation*}
 Маємо мінімізацію неперервної функції від параметрів $x'_i$,
 отже можемо взяти по них похідну
@@ -181,7 +181,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
 та прирівняти до нуля
 \begin{equation*}
   \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
-  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n
+  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n.
 \end{equation*}
 Маємо значення компоненти
 \begin{equation*}
@@ -190,19 +190,17 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
     {\sum\limits_{x \in X}
       \mathbb{P} \left( x \;\middle|\;  t \right)}
   = \sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n
+    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n.
 \end{equation*}
-
 Результуюча стратегія
 \begin{equation*}
   q^*\left( t \right)
-  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right)
+  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right).
 \end{equation*}
-
 У випадку неперервного розподілу ймовірностей
 \begin{equation*}
   q^*\left( t \right)
-  = \int\limits_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right) d\,x
+  = \int\limits_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right) d\,x.
 \end{equation*}
 
 \subsection{Різниця параметрів}
@@ -225,7 +223,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
         \mathbb{P} \left( x \;\middle|\;  t \right)
         \cdot \sum_{i = 1}^n \left( x'_i - x_i \right)^2
       \right]
-    \right\}
+    \right\}.
 \end{equation*}
 Маємо мінімізацію неперервної функції від параметрів $x'_i$,
 отже можемо взяти по них похідну
@@ -240,7 +238,7 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
 та прирівняти до нуля
 \begin{equation*}
   \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
-  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n
+  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n.
 \end{equation*}
 Маємо значення компоненти
 \begin{equation*}
@@ -249,17 +247,15 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
     {\sum\limits_{x \in X}
       \mathbb{P} \left( x \;\middle|\;  t \right)}
   = \sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n
+    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n.
 \end{equation*}
-
 Результуюча стратегія
 \begin{equation*}
   q^*\left( t \right)
-  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right)
+  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right).
 \end{equation*}
-
 У випадку неперервного розподілу ймовірностей
 \begin{equation*}
   q^*\left( t \right)
-  = \int\limits_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right) d\,x
+  = \int\limits_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right) d\,x.
 \end{equation*}
