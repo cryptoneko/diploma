@@ -1,4 +1,32 @@
-\subsection{Monte-Carlo}
+\section{Метод Монте-Карло}
+
+Оскільки функція $f$, що дає зображення $t$ для даного набору параметрів $x$,
+є складно влаштованою, вона не представлена в явному вигляді.
+Інтегрування виразу, що містить цю функцію, не може бути проведено аналітично.
+Метод Монте-Карло --- чисельний метод, що підходить до розв'язку даної задачі.
+
+Маємо інтеграл
+\begin{equation*}
+  q^* \left( t \right)
+  = c_t
+    \cdot \int\limits_{x \in X}
+      x
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
+                                {2 \cdot \sigma^2} \right\}}
+      \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}
+    d\,x,
+\end{equation*}
+який є математичним очікуванням функції
+стандартного гаусового $n$-вимірного вектора
+\begin{equation*}
+  q^* \left( t \right)
+  = \left( 2 \cdot \pi \cdot \sigma_t^2 \right)^{\frac{w \cdot h}{2}}
+    \cdot M_{\xi}\left[
+      \xi
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( \xi \right) \right\|^2}
+        {2 \cdot \sigma^2} \right\}} \right], \qquad
+    \xi \sim \mathcal{N}\left( 0, 1 \right)
+\end{equation*}
 
 \begin{equation*}
   \begin{split}
