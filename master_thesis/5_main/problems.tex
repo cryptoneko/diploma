@@ -216,7 +216,50 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
   = \sum_{p \in P} \left( x_p - x'_p \right)^2.
 \end{equation*}
 
+Оберемо стратегію $q^*$,
+що мінімізує математичне очікування цієї функції витрат
 \begin{equation*}
   q^* \left( t \right)
+  = \argmin_{x'} \left\{
+    \sum\limits_{x \in X} \left[
+        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \cdot \sum_{i = 1}^n \left( x'_i - x_i \right)^2
+      \right]
+    \right\}
+\end{equation*}
+Маємо мінімізацію неперервної функції від параметрів $x'_i$,
+отже можемо взяти по них похідну
+\begin{equation*}
+  \frac{\partial \sum\limits_{x \in X} \left[
+      \mathbb{P} \left( x \;\middle|\;  t \right)
+      \cdot \sum\limits_{i = 1}^n \cdot \left( x'_i - x_i \right)^2
+  \right]}{\partial x'_i}
+  = 2 \cdot \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
+    \cdot \left( x'_i - x_i \right), \qquad i = 1..n
+\end{equation*}
+та прирівняти до нуля
+\begin{equation*}
+  \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
+  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n
+\end{equation*}
+Маємо значення компоненти
+\begin{equation*}
+  x'_i = \frac{\sum\limits_{x \in X}
+    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i}
+    {\sum\limits_{x \in X}
+      \mathbb{P} \left( x \;\middle|\;  t \right)}
+  = \sum\limits_{x \in X}
+    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n
+\end{equation*}
+
+Результуюча стратегія
+\begin{equation*}
+  q^*\left( t \right)
   = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right)
+\end{equation*}
+
+У випадку неперервного розподілу ймовірностей
+\begin{equation*}
+  q^*\left( t \right)
+  = \int\limits_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right) d\,x
 \end{equation*}
