@@ -105,6 +105,8 @@
 є добутком ймовірностей
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
+  = \mathbb{P}_I\left( x \mid t \right)
+    \cdot \mathbb{P}_X\left( x \mid t \right)
   = \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
          {2 \cdot \sigma^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}
