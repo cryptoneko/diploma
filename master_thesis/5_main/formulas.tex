@@ -11,7 +11,7 @@
 Тоді ймовірність того,
 що дане зображення було отримано саме з параметрами $x$
 \begin{equation*}
-  \mathbb{P}\left( x \;\middle|\; t \right)
+  \mathbb{P}_I\left( x \;\middle|\; t \right)
   = \prod_{i \in I}
     \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
            {2 \cdot \sigma^2_t} \right\}}}
@@ -25,7 +25,7 @@
 тому що це зручніше,
 ніж максимізація добутку кількох десятків тисяч або мільйонів значень
 \begin{equation*}
-  \ln{\mathbb{P}\left( x \mid t \right)}
+  \ln{\mathbb{P}_I\left( x \mid t \right)}
   = \sum_{i \in I}
     \left\{
       - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
