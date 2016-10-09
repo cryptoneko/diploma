@@ -120,16 +120,16 @@
 
 Винесемо константи з добутків та позначимо
 \begin{equation*}
-  c = \left( 2 \cdot \pi \right)^{\frac{\left| I \right| + \left| P \right|}{2}}
-      \cdot \sigma^{\left| I \right|}
+  c_t = \left( 2 \cdot \pi \right)^{\frac{w \cdot h + n}{2}}
+    \cdot \sigma_t^{w \cdot h}.
 \end{equation*}
 Ймовірність приймає вигляд
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
-  = c
-    \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|}
+  = c_t
+    \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
                               {2 \cdot \sigma^2} \right\}}
-    \cdot \exp{\left\{ - \frac{\left\| x \right\|}{2} \right\}}
+    \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}.
 \end{equation*}
 Стратегія розпізнавання
 \begin{equation*}
@@ -137,8 +137,7 @@
   = c
     \cdot \sum_{x \in X}
       x
-      \cdot \exp{\left\{ - \frac{\left\| x \right\|}{2} \right\}}
-      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|}
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
                                 {2 \cdot \sigma^2} \right\}}
 \end{equation*}
 
