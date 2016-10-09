@@ -109,19 +109,6 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
 отже доведеться скористатися чисельними методами,
 які не дадуть точної відповіді.
 
-\subsection{Parameters difference}
-
-\begin{equation*}
-  W \left( x, x' \right)
-  = \left\| x - x' \right\|
-  = \sum_{p \in P} \left( x_p - x'_p \right)^2
-\end{equation*}
-
-\begin{equation*}
-  q^* \left( t \right)
-  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right)
-\end{equation*}
-
 \subsection{Models difference}
 
 \begin{equation*}
@@ -151,4 +138,17 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
   = M^{-1} \left(
       \sum_{x \in X} M\left( x \right) \cdot \mathbb{P}\left( x \mid t \right)
     \right)
+\end{equation*}
+
+\subsection{Parameters difference}
+
+\begin{equation*}
+  W \left( x, x' \right)
+  = \left\| x - x' \right\|
+  = \sum_{p \in P} \left( x_p - x'_p \right)^2
+\end{equation*}
+
+\begin{equation*}
+  q^* \left( t \right)
+  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right)
 \end{equation*}
