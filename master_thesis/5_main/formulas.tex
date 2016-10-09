@@ -52,13 +52,14 @@
   + \sum_{i \in I \setminus F} \left( t_i - f_i\left( x \right) \right)^2.
 \end{equation*}
 Рахуємо вибірковую дисперсію для тієї частини зображення,
-де зображено обличчя.
-Вважаємо, що вона приймає те ж значення для всього зображення
+де зображено обличчя
 \begin{equation*}
   \overline{\sigma_F^2}
   = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( x \right) \right)^2}
-         {\left| F - 1 \right|}
-  \Rightarrow
+    {\left| F - 1 \right|}.
+\end{equation*}
+Екстраполюємо це значення на все зображення
+\begin{equation*}
   \overline{\sigma_F^2}
   \approx \frac{\sum\limits_{i \in I}
              \left( t_i - f_i\left( x \right) \right)^2}
