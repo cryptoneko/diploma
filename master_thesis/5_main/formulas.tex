@@ -139,6 +139,26 @@
       x
       \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
                                 {2 \cdot \sigma^2} \right\}}
+    \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}.
+\end{equation*}
+У неперервному випадку
+\begin{equation*}
+  q^* \left( t \right)
+  = c_t
+    \cdot \int\limits_{x \in X}
+      x
+      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
+                                {2 \cdot \sigma^2} \right\}}
+      \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}
+    d\,x.
+\end{equation*}
+
+Оскільки $\sigma^2$ невідома,
+її можна оцінити за відомою формулою оптимальної оцінки дисперсії
+\begin{equation*}
+  \overline{\sigma^2}
+  = \sum_{x \in X}
+    \frac{\left\| f\left( x \right) - t \right\|^2}{w \cdot h \cdot n - 1}.
 \end{equation*}
 
 \begin{equation*}
