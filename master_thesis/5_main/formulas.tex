@@ -2,6 +2,21 @@
 
 \subsection{Bin}
 
+Вважаємо, що на даному зображенні $t$
+присутній нормальний шум з невідомою дисперсією $\sigma^2_t$.
+Тоді ймовірність того,
+що дане зображення було отримано саме з параметрами $x$
+\begin{equation*}
+  \mathbb{P}\left( x \;\middle|\; t \right)
+  = \prod_{i \in I}
+    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
+           {2 \cdot \sigma^2_t} \right\}}}
+           {\sqrt{2 \cdot \pi \cdot \sigma^2_t}}.
+\end{equation*}
+Коли з контексту буде зрозуміло,
+якому саме зображенню належить дана дисперсія,
+індекс $t$ не будемо використовувати.
+
 \begin{equation*}
   \ln{\mathbb{P}\left( x \mid t \right)}
   = \sum_{i \in I}
