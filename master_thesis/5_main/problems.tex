@@ -84,6 +84,29 @@ $10^{6 \cdot 256}=10^{1536}$ різних зображень, тобто ней�
   = \mathbbm{1} \left( x \neq x' \right).
 \end{equation*}
 
+Оберемо стратегію $q^*$,
+що мінімізує математичне очікування для цієї функції витрат
+\begin{equation*}
+  \begin{split}
+    q^* \left( t \right)
+    = \argmin_{x'} \left\{
+      \sum\limits_{x \in X}
+        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \cdot \mathbbm{1} \left( x \neq x' \right)
+      \right\} = \\
+    = \argmin_{x'} \left\{
+      \sum\limits_{x \in X}
+        \mathbb{P} \left( x \;\middle|\;  t \right)
+      - \sum\limits_{x \in X}
+        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \cdot \mathbbm{1} \left( x = x' \right)
+      \right\} = \\
+    = \argmin_{x'} \left\{
+      1 - \mathbb{P} \left( x' \;\middle|\;  t \right)
+      \right\}.
+  \end{split}
+\end{equation*}
+Тобто,
 \begin{equation*}
   q^* \left( t \right)
   = \argmax_x \mathbb{P} \left( x \;\middle\;  t \right).
