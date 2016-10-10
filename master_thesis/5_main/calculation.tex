@@ -48,22 +48,39 @@
 просумувати та поділити на кількість спроб.
 Перед цим потрібно оцінити дисперсію шуму $\sigma^2$ на зображенні $t$.
 
+Припустимо,
+потрібно з ймовірністю не меншою за $0.99$
+знайти оцінку інтеграла з похибкою не більшою за $\varepsilon = 0.01$.
+Введемо допоміжні величини
 \begin{equation*}
   \begin{split}
-    z^2_{\gamma} = 2.575^2 \\
-    \varepsilon^2 = 0.01^2 \\
+    z^2_{\gamma} = \Phi\left( 0.99 \right)^2 = 2.575^2, \\
+    \varepsilon^2 = 0.01^2.
+  \end{split}
+\end{equation*}
+Розрахуємо суму отриманих значень та суму їх квадратів
+\begin{equation*}
+  \begin{split}
     M\left( N \right) = \sum_{i=1}^{N} \left(
         \hat{Q}^{\left( i \right)}\left( x \right)
-      \right)^2 \\
-      S\left( N \right) = \sum_{i=1}^{N} \left(
-      \hat{Q}^{\left( i \right)}\left( x \right)
-      \right) \\
+      \right)^2, \\
+    S\left( N \right) = \sum_{i=1}^{N} \left(
+        \hat{Q}^{\left( i \right)}\left( x \right)
+      \right).
+  \end{split}
+\end{equation*}
+Маємо оцінку математичного очікування та дисперсії інтегралу
+\begin{equation*}
+  \begin{split}
     \hat{V}^2_N = \frac{1}{N-1}
       \cdot \left[ M\left( N \right) - \frac{1}{N}
-        \cdot \left( S\left( N \right) \right) \right] \\
-    \hat{Q}^2_N = \left( \frac{1}{N} \cdot S\left( N \right) \right) \\
-    N^* = \min{\left\{ N \;\middle|\;
-      N > \frac{z^2_{\gamma} \cdot \hat{V}^2_N}
-        {\varepsilon^2 \cdot \hat{Q}^2_N} \right\}}
+      \cdot \left( S\left( N \right) \right) \right], \\
+    \hat{Q}^2_N = \left( \frac{1}{N} \cdot S\left( N \right) \right). \\
   \end{split}
+\end{equation*}
+Кількість необхідних ітерацій $N^*$ рахується за формулою
+\begin{equation*}
+  N^* = \min{\left\{ N \;\middle|\;
+    N > \frac{z^2_{\gamma} \cdot \hat{V}^2_N}
+    {\varepsilon^2 \cdot \hat{Q}^2_N} \right\}}.
 \end{equation*}
