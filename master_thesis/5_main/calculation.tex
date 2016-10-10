@@ -64,18 +64,16 @@
     M\left( N \right) = \sum_{i=1}^{N} \left(
         \hat{Q}^{\left( i \right)}\left( x \right)
       \right)^2, \\
-    S\left( N \right) = \sum_{i=1}^{N} \left(
-        \hat{Q}^{\left( i \right)}\left( x \right)
-      \right).
+    S\left( N \right) = \sum_{i=1}^{N}
+        \hat{Q}^{\left( i \right)}\left( x \right).
   \end{split}
 \end{equation*}
 Маємо оцінку математичного очікування та дисперсії інтегралу
 \begin{equation*}
   \begin{split}
+    \hat{Q}^2_N = \frac{S\left( N \right)}{N}, \\
     \hat{V}^2_N = \frac{1}{N-1}
-      \cdot \left[ M\left( N \right) - \frac{1}{N}
-      \cdot \left( S\left( N \right) \right) \right], \\
-    \hat{Q}^2_N = \left( \frac{1}{N} \cdot S\left( N \right) \right). \\
+      \cdot \left[ M\left( N \right) - \hat{Q}^2_N \right].
   \end{split}
 \end{equation*}
 Кількість необхідних ітерацій $N^*$ рахується за формулою
