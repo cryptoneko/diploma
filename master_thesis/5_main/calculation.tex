@@ -58,26 +58,22 @@
     \varepsilon^2 = 0.01^2.
   \end{split}
 \end{equation*}
-Розрахуємо суму отриманих значень та суму їх квадратів
+Середнє значення
 \begin{equation*}
-  \begin{split}
-    M\left( N \right) = \sum_{i=1}^{N} \left(
-        \hat{Q}^{\left( i \right)}\left( x \right)
-      \right)^2, \\
-    S\left( N \right) = \sum_{i=1}^{N}
-        \hat{Q}^{\left( i \right)}\left( x \right).
-  \end{split}
+  \overline{Q}_N = \frac{\sum\limits_{i=1}^{N}
+    \hat{Q}^{\left( i \right)}\left( x \right)}{N}.
 \end{equation*}
-Маємо оцінку дисперсії інтегралу
+Незміщена оцінка дисперсії
 \begin{equation*}
-  \begin{split}
-    \hat{Q}^2_N = \left( \frac{S\left( N \right)}{N} \right)^2, \\
-    \hat{V}^2_N = \frac{M\left( N \right) - N \cdot \hat{Q}^2_N}{N-1}.
-  \end{split}
+  \widetilde{Q}_N
+  = \frac{
+    \sum\limits_{i=1}^{N}
+      \left( \hat{Q}^{\left( i \right)}\left( x \right) \right)^2
+    - \overline{Q}_N^2}{N - 1}.
 \end{equation*}
 Кількість необхідних ітерацій $N^*$ рахується за формулою
 \begin{equation*}
   N^* = \min{\left\{ N \;\middle|\;
-    N > \frac{z^2_{\gamma} \cdot \hat{V}^2_N}
-    {\varepsilon^2 \cdot \hat{Q}^2_N} \right\}}.
+    N > \frac{z^2_{\gamma} \cdot \widetilde{Q}_N}
+    {\varepsilon^2 \cdot \overline{Q}_N^2} \right\}}.
 \end{equation*}
