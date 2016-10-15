@@ -147,10 +147,25 @@
 Щоб виразити $z_{\gamma}$,
 потрібно скористатися квантилєм нормального розподілу
 \begin{equation*}
-  \Phi^{-1}\left(
-    \frac{\gamma + 1}{2}
-  \right)
-  = z_{\gamma}.
+  \Phi^{-1}\left( \frac{\gamma + 1}{2} \right) = z_{\gamma}.
+\end{equation*}
+Щоб відносна похибка обчислення математичного очікування методом Монте-Карло
+не перевищувала $\varepsilon$ з ймовірністю $\gamma$ і вище,
+необхідна та достатня кількість ітерацій рахується за формулою
+\begin{equation*}
+    N
+    = \left\lceil \frac{z^2_{\gamma} \cdot D\left( Q \right)}
+      {\varepsilon^2 \cdot \overline{Q}_N^2} \right\rceil, \qquad
+    z_{\gamma} = \Phi^{-1}\left( \frac{\gamma + 1}{2} \right).
+\end{equation*}
+Коли дисперсія отриманої послідовності невідома,
+використовується її незміщена оцінка
+\begin{equation*}
+  \widetilde{Q}_N
+  = \frac{
+    \sum\limits_{i=1}^{N}
+      \left( \hat{Q}^{\left( i \right)}\left( x \right) \right)^2
+    - \overline{Q}_N^2}{N - 1}.
 \end{equation*}
 
 Припустимо,
