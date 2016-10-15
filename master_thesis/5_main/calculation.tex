@@ -48,6 +48,111 @@
 просумувати та поділити на кількість спроб.
 Перед цим потрібно оцінити дисперсію шуму $\sigma^2$ на зображенні $t$.
 
+Згадаємо центральну граничну теорему
+\begin{equation*}
+  \sqrt{N}
+    \cdot \frac{\overline{Q}_N - M\left( Q \right)}
+    {\sqrt{D\left( Q \right)}} \Rightarrow \mathcal{N}\left( 0, 1 \right).
+\end{equation*}
+Для певного $z_{\gamma} > 0$
+\begin{equation*}
+  \mathbb{P}\left(
+    \sqrt{N}
+    \cdot \frac{\overline{Q}_N - M\left( Q \right)}{\sqrt{D\left( Q \right)}}
+    \le z_{\gamma}
+  \right) = \Phi\left( z_{\gamma} \right),
+\end{equation*}
+де $\Phi$ --- інтегральна функція стандартного гаусового розподілу.
+Нас цікавить ймовірність
+\begin{equation*}
+  \mathbb{P}\left(
+    -z_{\gamma} \le
+    \sqrt{N}
+    \cdot \frac{\overline{Q}_N - M\left( Q \right)}{\sqrt{D\left( Q \right)}}
+    \le z_{\gamma}
+  \right)
+  = \Phi\left( z_{\gamma} \right) - \Phi\left( -z_{\gamma} \right).
+\end{equation*}
+Розпишемо через модуль та скористаємося симетричністю гаусового розподілу
+\begin{equation*}
+  \mathbb{P}\left(
+    \left|
+      \sqrt{N}
+      \cdot \frac{\overline{Q}_N - M\left( Q \right)}{\sqrt{D\left( Q \right)}}
+    \right|
+    \le z_{\gamma}
+  \right)
+  = 2 \cdot \Phi\left( z_{\gamma} \right) - 1.
+\end{equation*}
+Поділимо обидві частини нерівності, ймовірність котрої рахується,
+на модуль середнього значення виборки
+\begin{equation*}
+  \mathbb{P}\left(
+    \left|
+      \sqrt{N}
+      \cdot \frac{\overline{Q}_N - M\left( Q \right)}
+        {\overline{Q}_N \cdot \sqrt{D\left( Q \right)}}
+    \right|
+    \le \frac{z_{\gamma}}{\left| \overline{Q}_N \right|}
+  \right)
+  = 2 \cdot \Phi\left( z_{\gamma} \right) - 1.
+\end{equation*}
+Позначимо відносну похибку
+\begin{equation*}
+  \varepsilon
+  = \left| \frac{\overline{Q}_N - M\left( Q \right)}{\overline{Q}_N} \right|
+\end{equation*}
+та перепишемо вираз
+\begin{equation*}
+  \mathbb{P}\left(
+    \left|
+      \sqrt{N}
+      \cdot \frac{\varepsilon}
+        {\sqrt{D\left( Q \right)}}
+    \right|
+    \le \frac{z_{\gamma}}{\left| \overline{Q}_N \right|}
+  \right)
+  = 2 \cdot \Phi\left( z_{\gamma} \right) - 1.
+\end{equation*}
+Перенесемо все окрім кореню від кількості спроб в праву частину нерівності
+\begin{equation*}
+  \mathbb{P}\left(
+    \left|
+      \sqrt{N}
+    \right|
+    \le \left|
+      \frac{z_{\gamma} \cdot \sqrt{D\left( Q \right)}}
+      {\varepsilon \cdot \overline{Q}_N} \right|
+  \right)
+  = 2 \cdot \Phi\left( z_{\gamma} \right) - 1
+\end{equation*}
+та піднесемо обидві частини нерівності до квадрату
+\begin{equation*}
+  \mathbb{P}\left(
+    N
+    \le \frac{z^2_{\gamma} \cdot D\left( Q \right)}
+      {\varepsilon^2 \cdot \overline{Q}_N^2}
+  \right)
+  = 2 \cdot \Phi\left( z_{\gamma} \right) - 1.
+\end{equation*}
+Перепозначимо отриману ймовірність
+\begin{equation*}
+  \mathbb{P}\left(
+    N
+    \le \frac{z^2_{\gamma} \cdot D\left( Q \right)}
+      {\varepsilon^2 \cdot \overline{Q}_N^2}
+  \right)
+  = \gamma.
+\end{equation*}
+Щоб виразити $z_{\gamma}$,
+потрібно скористатися квантилєм нормального розподілу
+\begin{equation*}
+  \Phi^{-1}\left(
+    \frac{\gamma + 1}{2}
+  \right)
+  = z_{\gamma}.
+\end{equation*}
+
 Припустимо,
 потрібно з ймовірністю не меншою за $\gamma = 0.99$
 знайти оцінку інтеграла з похибкою не більшою за $\varepsilon = 0.01$
