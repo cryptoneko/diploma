@@ -7,25 +7,31 @@
 а за всі інші сплачується штраф $1$.
 
 Щоб задача мала сенс, дискретизуємо простір параметрів $X$.
-Введемо деяке невелике $\delta x$,
-щоб ймовірність того, что значення потрапляє в проміжок
-$\left[ x - \delta x; x + \delta x \right]$
-приблизно дорівнювала добутку щільності розподілу на $\delta x$
+Введемо невелике $\delta x$ таке,
+щоб ймовірність того, что значення потрапляє в рамки гіперкубу
+$\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$, де
 \begin{equation*}
-  \mathbb{P}\left( \xi \in \left[ x - \delta x; x + \delta x \right] \right)
-  \approx p\left( x \right) \cdot \delta x.
+  \left( x \pm \frac{\delta x}{2} \right)_i = x_i \pm \frac{\delta x}{2},\qquad
+  i = 1..n,
+\end{equation*}
+приблизно дорівнювала добутку щільності розподілу на об'єм цього гіперкубу
+\begin{equation*}
+  \mathbb{P}\left( \xi \in \left[ x - \frac{\delta x}{2};
+                                  x + \frac{\delta x}{2} \right] \right)
+  \approx p\left( x \right) \cdot \delta x^n.
 \end{equation*}
 Далі треба розбити простір на гіперкуби
-зі стороною $2 \cdot \delta x$ і вважати,
+зі стороною $\delta x$ і вважати,
 що коли величина потрапляє на територію певного гіперкубу,
 то вона дорівнює значенню в його центрі.
-Позначимо в рамках даного пункту
+Позначимо
 \begin{equation*}
   \mathbb{P}_I\left( x \;\middle|\; t \right)
   = \mathbb{P}_I\left( \xi = x \;\middle|\; t \right)
-  = \mathbb{P}\left( \xi \in \left[ x - \delta x; x + \delta x \right]
+  = \mathbb{P}\left( \xi \in \left[ x - \frac{\delta x}{2};
+                                    x + \frac{\delta x}{2} \right]
     \;\middle|\; t \right)
-  \approx p\left( x \;\middle|\; t \right) \cdot \delta x.
+  \approx p\left( x \;\middle|\; t \right) \cdot \delta x^n.
 \end{equation*}
 
 Вважаємо, що на даному зображенні $t$
@@ -34,7 +40,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 що дане зображення було отримано саме з параметрами $x$
 \begin{equation*}
   \mathbb{P}_I\left( x \;\middle|\; t \right)
-  = \delta x \cdot \prod_{i \in I}
+  = \delta x^n \cdot \prod_{i \in I}
     \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
            {2 \cdot \sigma^2_t} \right\}}}
            {\sqrt{2 \cdot \pi \cdot \sigma^2_t}}.
@@ -48,7 +54,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 ніж максимізація добутку кількох десятків тисяч або мільйонів значень
 \begin{equation*}
   \ln{\mathbb{P}_I\left( x \mid t \right)}
-  = \ln{\delta x} + \sum_{i \in I}
+  = \ln{\delta x^n} + \sum_{i \in I}
     \left\{
       - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
       - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
@@ -110,7 +116,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 є очищеним від шумів зображенням $t$
 \begin{equation*}
   \mathbb{P}_I\left( x \mid t \right)
-  = \prod_{i \in I}
+  = \delta x^n \cdot \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
     {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}.
 \end{equation*}
@@ -119,7 +125,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 Ймовірність того, що було згенеровано саме такий набір
 \begin{equation*}
   \mathbb{P}_X\left( x \mid t \right)
-  = \prod_{i=1}^n
+  = \delta x^n \cdot \prod_{i=1}^n
     \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
 Ймовірність того,
@@ -129,7 +135,7 @@ $\left[ x - \delta x; x + \delta x \right]$
   \mathbb{P}\left( x \mid t \right)
   = \mathbb{P}_I\left( x \mid t \right)
     \cdot \mathbb{P}_X\left( x \mid t \right)
-  = \prod_{i \in I}
+    = \delta x^{2 \cdot n} \cdot \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
          {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma_t^2}}
     \cdot
@@ -148,7 +154,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 Ймовірність приймає вигляд
 \begin{equation*}
   \mathbb{P}\left( x \mid t \right)
-  = c_t
+  = c_t \cdot \delta x^{2 \cdot n}
     \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
                               {2 \cdot \sigma^2} \right\}}
     \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}.
@@ -156,7 +162,7 @@ $\left[ x - \delta x; x + \delta x \right]$
 Стратегія розпізнавання
 \begin{equation*}
   q^* \left( t \right)
-  = c_t
+  = c_t \cdot \delta x^{2 \cdot n}
     \cdot \sum_{x \in X}
       x
       \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
