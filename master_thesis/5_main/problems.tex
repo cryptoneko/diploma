@@ -60,7 +60,7 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 \begin{equation*}
   R \left( q \right)
   = \sum\limits_{t \in T} \sum\limits_{x \in X}
-    \mathbb{P} \left( x,  q\left( t \right) \right)
+    \mathbb{P}\left( x,  q\left( t \right) \right)
     \cdot W \left( x, q\left( t \right) \right).
 \end{equation*}
 Задача --- знайти таке вирішальне правило $q$, яке мінімізує Баєсів ризик
@@ -83,18 +83,18 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
     q^* \left( t \right)
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x \;\middle|\;  t \right)
         \cdot \mathbbm{1} \left( x \neq x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x \;\middle|\;  t \right)
       - \sum\limits_{x \in X}
-        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x \;\middle|\;  t \right)
         \cdot \mathbbm{1} \left( x = x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
-      1 - \mathbb{P} \left( x' \;\middle|\;  t \right)
+      1 - \mathbb{P}\left( x' \;\middle|\;  t \right)
       \right\}.
   \end{split}
 \end{equation*}
