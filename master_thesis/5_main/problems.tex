@@ -144,10 +144,10 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 \end{equation*}
 
 Координати кожної вершини $v$ породжувальної моделі отримуються шляхом
-перемноження компонент параметру $x$ на відповідний коефіцієнт $\alpha^v$
-отриманий шляхом методу головних компонент
+перемноження компонент параметру $x$ на відповідний коефіцієнт $\lambda^v$
+отриманий за допомогою методу головних компонент
 \begin{equation*}
-  G_v\left( x \right) = \sum_{i \in 1}^n \alpha_i^v \cdot x_i,
+  G_v\left( x \right) = \sum_{i \in 1}^n \lambda_i^v \cdot x_i,
   \qquad v \in V.
 \end{equation*}
 
@@ -160,11 +160,11 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
         G_v\left( x \right) - G_v\left( x' \right)
       \right]^2 = \\
     = \sum_{v \in V} \sum_{p \in P} \left[
-        \alpha_p^v \cdot \left( x_p - x'_p \right)
+        \lambda_p^v \cdot \left( x_p - x'_p \right)
       \right]^2
     = \sum_{p \in P} \left\{ \left( x_p - x'_p \right)^2
-      \cdot \sum_{v \in V} \left( \alpha_p^v \right)^2 \right\} = \\
-    = \left| \beta_p^2 = \sum_{v \in V} \left( \alpha_p^v \right)^2 \right|
+      \cdot \sum_{v \in V} \left( \lambda_p^v \right)^2 \right\} = \\
+    = \left| \beta_p^2 = \sum_{v \in V} \left( \lambda_p^v \right)^2 \right|
     = \sum_{p \in P} \beta_p^2 \cdot \left( x_p - x'_p \right)^2.
   \end{split}
 \end{equation*}
