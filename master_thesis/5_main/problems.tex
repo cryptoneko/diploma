@@ -92,16 +92,9 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 \cite{schlesinger:2002}
 \begin{equation*}
   R \left( q \right)
-  = \sum\limits_{t \in T} \sum\limits_{x \in X}
-    \mathbb{P}\left( x,  q\left( t \right) \right)
-    \cdot W \left( x, q\left( t \right) \right).
-\end{equation*}
-У випадку неперервного розподілу параметрів $x$
-\begin{equation*}
-  R \left( q \right)
-  = \sum\limits_{t \in T} \int\limits_{x \in X}
-    p\left( x,  q\left( t \right) \right)
-    \cdot W \left( x, q\left( t \right) \right) d\; x.
+  = \sum\limits_{t \in T} \int\limits_{X}
+    W \left( x, q\left( t \right) \right)
+    d F\left( t, x \right).
 \end{equation*}
 Задача --- знайти таке вирішальне правило $q$, яке мінімізує Баєсів ризик
 \begin{equation*}
