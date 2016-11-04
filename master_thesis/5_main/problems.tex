@@ -1,5 +1,7 @@
 \section{Задача}
 
+\subsection{Початкові умови}
+
 Позначимо множину $T$ зображень.
 Кольори --- відтінки сірого, що визначаються лише інтенсивністю від $0$ до $1$.
 Введемо множину $I$ пікселів зображення.
@@ -28,14 +30,45 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 \begin{equation*}
   f: X \rightarrow T.
 \end{equation*}
-Введемо позначення для зображення згенерованого з певним набором параметрів $x$
+
+Вважаємо,
+що на вхідне зображення накладено шум $\eta$,
+що є вектором незалежних випадкових величин
+розподілених за центрованим нормальним законом
+та однаковою невідомою дисперсією $\sigma^2$
 \begin{equation*}
-  f\left( x \right) = t.
+  t = f\left( x \right) + \eta.
 \end{equation*}
-Інтенсивність $i$ пікселя позначимо
+Інтенсивність $i$ пікселя
 \begin{equation*}
-  f_i\left( x \right) = t_i.
+  t_i = f_i\left( x \right) + \eta_i,\qquad
+  \eta_i \sim \mathcal{N}\left( 0, \sigma^2 \right), \qquad
+  i \in I.
 \end{equation*}
+Ймовірність того, що буде пред'явлено зображення $t$ з параметрами $x$,
+є сумісною ймовірністю
+\begin{equation*}
+  \mathbb{P}\left( f\left( \xi \right) + \eta = t, \xi = x \right).
+\end{equation*}
+З визначення умовної ймовірності випливає
+\begin{equation*}
+  \mathbb{P}\left( f\left( \xi \right) + \eta = t, \xi = x \right)
+  = \mathbb{P}\left( f\left( \xi \right) + \eta = t
+                    \;\middle|\; \xi = x \right)
+    \cdot \mathbb{P}\left( \xi = x \right).
+\end{equation*}
+Позбавимося умовної ймовірності, замінивши $\xi$ на $x$
+\begin{equation*}
+  \mathbb{P}\left( f\left( \xi \right) + \eta = t, \xi = x \right)
+  = \mathbb{P}\left( \eta = t - f_i\left( x \right) \right)
+    \cdot \mathbb{P}\left( \xi = x \right).
+\end{equation*}
+Це означає,
+що ймовірність отримати на вході зображення $t$ згенероване з параметрами $x$
+дорівнює добутку ймовірності отримати зображення з шумом $t - f\left( x \right)$
+на ймовірність того, що це зображення згенеровано з параметрами $x$.
+
+\subsection{Баєсова задача розпізнавання}
 
 Поставимо Баєсову задачу розпізнавання.
 Для цього потрібно визначитися з функцією витрат
