@@ -127,25 +127,25 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
     q^* \left( t \right)
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P}\left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x,  t \right)
         \cdot \mathbbm{1} \left( x \neq x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P}\left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x,  t \right)
       - \sum\limits_{x \in X}
-        \mathbb{P}\left( x \;\middle|\;  t \right)
+        \mathbb{P}\left( x,  t \right)
         \cdot \mathbbm{1} \left( x = x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
-      1 - \mathbb{P}\left( x' \;\middle|\;  t \right)
+      1 - \mathbb{P}\left( x',  t \right)
       \right\}.
   \end{split}
 \end{equation*}
 В результаті
 \begin{equation*}
   q^* \left( t \right)
-  = \argmax_x \mathbb{P} \left( x \;\middle|\;  t \right).
+  = \argmax_x \mathbb{P} \left( x,  t \right).
 \end{equation*}
 
 Отже, якщо використовується бінарна функція витрат,
