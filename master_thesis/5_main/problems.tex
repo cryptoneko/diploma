@@ -185,29 +185,23 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
   \begin{split}
     q^* \left( t \right)
     = \argmin_{x'} \left\{
-      \sum\limits_{x \in X}
-        \mathbb{P}\left( x \;\middle|\;  t \right)
-        \cdot \mathbbm{1} \left( x \notin \delta\left( x' \right) \right)
+      \int\limits_{X}
+        \mathbbm{1} \left( x \notin \delta\left( x' \right) \right)
+        d F\left( x,  t \right)
       \right\} = \\
     = \argmin_{x'} \left\{
       1 -
-      \sum\limits_{x \in X}
-        \mathbb{P}\left( x \;\middle|\;  t \right)
-        \cdot \mathbbm{1} \left( x \in \delta\left( x' \right) \right)
+      \int\limits_{X}
+        \mathbbm{1} \left( x \in \delta\left( x' \right) \right)
+        d F\left( x,  t \right)
       \right\}
   \end{split}
 \end{equation*}
-Для дискретного розподілу маємо
+В результаті
 \begin{equation*}
   q^* \left( t \right)
-  = \argmax_{x'} \sum\limits_{x \in \delta\left( x' \right)}
-    \mathbb{P}\left( x \;\middle|\;  t \right).
-\end{equation*}
-У випадку неперервного розподілу
-\begin{equation*}
-  q^* \left( t \right)
-  = \argmax_{x'} \int\limits_{x \in \delta\left( x' \right)}
-    p\left( x \;\middle|\;  t \right) d\; x.
+  = \argmax_{x'} \int\limits_{\delta\left( x' \right)}
+    dF\left( x,  t \right).
 \end{equation*}
 
 \subsection{Різниця моделей}
