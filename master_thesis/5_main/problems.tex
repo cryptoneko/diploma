@@ -265,7 +265,7 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
   q^* \left( t \right)
   = \argmin_{x'} \left\{
     \sum\limits_{x \in X} \left[
-        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \mathbb{P} \left( t, x \right)
         \cdot \sum_{i = 1}^n \beta_i^2 \cdot \left( x'_i - x_i \right)^2
       \right]
     \right\}.
@@ -274,25 +274,25 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 можна взяти по них похідну
 \begin{equation*}
   \frac{\partial \sum\limits_{x \in X} \left[
-      \mathbb{P} \left( x \;\middle|\;  t \right)
+      \mathbb{P} \left( t, x \right)
       \cdot \sum\limits_{i = 1}^n \beta_i^2 \cdot \left( x'_i - x_i \right)^2
   \right]}{\partial x'_i}
-  = 2 \cdot \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
+  = 2 \cdot \sum_{x \in X} \mathbb{P} \left( t, x \right)
     \cdot \beta_i^2 \cdot \left( x'_i - x_i \right), \qquad i = 1..n
 \end{equation*}
 та прирівняти до нуля
 \begin{equation*}
-  \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
+  \sum_{x \in X} \mathbb{P} \left( t, x \right)
   \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n.
 \end{equation*}
 Значення компоненти
 \begin{equation*}
   x'_i = \frac{\sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i}
+    \mathbb{P} \left( t, x \right) \cdot x_i}
     {\sum\limits_{x \in X}
-      \mathbb{P} \left( x \;\middle|\;  t \right)}
+      \mathbb{P} \left( t, x \right)}
   = \sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n.
+    \mathbb{P} \left( t, x \right) \cdot x_i, \qquad i = 1..n.
 \end{equation*}
 Результуюча стратегія
 \begin{equation*}
@@ -322,7 +322,7 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
   q^* \left( t \right)
   = \argmin_{x'} \left\{
     \sum\limits_{x \in X} \left[
-        \mathbb{P} \left( x \;\middle|\;  t \right)
+        \mathbb{P} \left( t, x \right)
         \cdot \sum_{i = 1}^n \left( x'_i - x_i \right)^2
       \right]
     \right\}.
