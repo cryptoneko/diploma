@@ -126,7 +126,7 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
   = \sum\limits_{t \in T}
     \int\limits_{x \in X}
     \mathbbm{1} \left( x \neq q\left( t \right) \right)
-    \cdot p\left( x,  t \right) d\; x
+    \cdot p\left( t, x \right) d\; x
   = 1,\qquad
   \forall q \in Q.
 \end{equation*}
@@ -141,25 +141,25 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
     q^* \left( t \right)
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P}\left( x,  t \right)
+        \mathbb{P}\left( t, x \right)
         \cdot \mathbbm{1} \left( x \neq x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
       \sum\limits_{x \in X}
-        \mathbb{P}\left( x,  t \right)
+        \mathbb{P}\left( t, x \right)
       - \sum\limits_{x \in X}
-        \mathbb{P}\left( x,  t \right)
+        \mathbb{P}\left( t, x \right)
         \cdot \mathbbm{1} \left( x = x' \right)
       \right\} = \\
     = \argmin_{x'} \left\{
-      1 - \mathbb{P}\left( x',  t \right)
+      1 - \mathbb{P}\left( t, x' \right)
       \right\}.
   \end{split}
 \end{equation*}
 В результаті
 \begin{equation*}
   q^* \left( t \right)
-  = \argmax_x \mathbb{P} \left( x,  t \right).
+  = \argmax_x \mathbb{P} \left( t, x \right).
 \end{equation*}
 
 Отже, якщо використовується бінарна функція витрат,
@@ -187,13 +187,13 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
     = \argmin_{x'} \left\{
       \int\limits_{X}
         \mathbbm{1} \left( x \notin \delta\left( x' \right) \right)
-        d F\left( x,  t \right)
+        d F\left( t, x \right)
       \right\} = \\
     = \argmin_{x'} \left\{
       1 -
       \int\limits_{X}
         \mathbbm{1} \left( x \in \delta\left( x' \right) \right)
-        d F\left( x,  t \right)
+        d F\left( t, x \right)
       \right\}
   \end{split}
 \end{equation*}
