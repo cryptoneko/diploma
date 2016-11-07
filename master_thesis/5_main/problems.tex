@@ -318,45 +318,38 @@ $10^{6 \cdot 256} = 10^{1536}$ різних зображень розміром 
 \begin{equation*}
   q^* \left( t \right)
   = \argmin_{x'} \left\{
-    \sum\limits_{x \in X} \left[
-        \mathbb{P} \left( t, x \right)
-        \cdot \sum_{i = 1}^n \left( x'_i - x_i \right)^2
-      \right]
+    \int\limits_{X}
+        \sum_{i = 1}^n \left( x'_i - x_i \right)^2
+        dF\left( t, x \right)
     \right\}.
 \end{equation*}
 Маємо мінімізацію неперервної функції від параметрів $x'_i$,
 отже можемо взяти по них похідну
 \begin{equation*}
-  \frac{\partial \sum\limits_{x \in X} \left[
-      \mathbb{P} \left( x \;\middle|\;  t \right)
-      \cdot \sum\limits_{i = 1}^n \left( x'_i - x_i \right)^2
-  \right]}{\partial x'_i}
-  = 2 \cdot \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
+  \frac{\partial \int\limits_{X}
+      \sum\limits_{i = 1}^n \left( x'_i - x_i \right)^2
+      dF\left( t, x \right)
+  }{\partial x'_i}
+  = 2 \cdot \int\limits_{x \in X} dF\left( t, x \right)
     \cdot \left( x'_i - x_i \right), \qquad i = 1..n
 \end{equation*}
 та прирівняти до нуля
 \begin{equation*}
-  \sum_{x \in X} \mathbb{P} \left( x \;\middle|\;  t \right)
-  \cdot \left( x'_i - x_i \right) = 0, \qquad i = 1..n.
+  \int\limits_{X}
+    \left( x'_i - x_i \right) dF\left( t, x \right) = 0, \qquad i = 1..n.
 \end{equation*}
 Значення компоненти
 \begin{equation*}
-  x'_i = \frac{\sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i}
+  x'_i = \frac{\int\limits_{X} x_i dF\left( t, x \right)}
     {\sum\limits_{x \in X}
-      \mathbb{P} \left( x \;\middle|\;  t \right)}
+      \mathbb{P} \left( t, x \right)}
   = \sum\limits_{x \in X}
-    \mathbb{P} \left( x \;\middle|\;  t \right) \cdot x_i, \qquad i = 1..n.
+    \mathbb{P} \left( t, x \right) \cdot x_i, \qquad i = 1..n.
 \end{equation*}
 Результуюча стратегія
 \begin{equation*}
   q^*\left( t \right)
-  = \sum_{x \in X} x \cdot \mathbb{P}\left( x \mid t \right).
-\end{equation*}
-У випадку неперервного розподілу ймовірностей
-\begin{equation*}
-  q^*\left( t \right)
-  = \int\limits_{x \in X} x \cdot p\left( x \mid t \right) d\,x.
+  = \frac{\int\limits_{X} x dF\left( t, x \right)}{\mathbb{P}\left( t \right)}.
 \end{equation*}
 
 Отримана та ж стратегія,
