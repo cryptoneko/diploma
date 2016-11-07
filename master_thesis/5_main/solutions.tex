@@ -9,17 +9,19 @@
 
 Дискретизуємо простір параметрів $X$.
 Введемо невелике $\delta x$ таке,
-щоб ймовірність того, что значення потрапляє в рамки гіперкубу
-$\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$, де
-\begin{equation*}
-  \left( x \pm \frac{\delta x}{2} \right)_i = x_i \pm \frac{\delta x}{2},\qquad
-  i = 1..n,
-\end{equation*}
-приблизно дорівнювала добутку щільності розподілу на об'єм цього гіперкубу
+щоб ймовірність того, що значення потрапляє в рамки гіперкубу
+$\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$
+приблизно дорівнювала добутку щільності розподілу в його центрі
+на його об'єм
 \begin{equation*}
   \mathbb{P}\left( \xi \in \left[ x - \frac{\delta x}{2};
                                   x + \frac{\delta x}{2} \right] \right)
-  \approx p\left( x \right) \cdot \delta x^n.
+  \approx p\left( x \right) \cdot \delta x^n,
+\end{equation*}
+де
+\begin{equation*}
+  \left( x \pm \frac{\delta x}{2} \right)_i = x_i \pm \frac{\delta x}{2},\qquad
+  i = 1..n.
 \end{equation*}
 Далі треба розбити простір на гіперкуби
 зі стороною $\delta x$ і вважати,
