@@ -37,11 +37,17 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
     \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
 
+Введемо зручне позначення для шуму в пікселі $i$
+\begin{equation*}
+  y_i = t_i - f_i\left( x \right).
+\end{equation*}
+Розглядається одне зображення $t$.
+З контексту буде зрозуміло, яке значення має $x$.
 Ймовірність того, що обличчя на даному зображенні отримано з параметрами $x$
 \begin{equation*}
-  \mathbb{P}_I\left( t \;\middle|\; x \right)
+  \mathbb{P}_Y\left( t \;\middle|\; x \right)
   = \delta x^{w \cdot h} \cdot \prod_{i \in I}
-    \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
+    \frac{\exp{\left\{- \frac{ y_i^2}
            {2 \cdot \sigma^2_t} \right\}}}
            {\sqrt{2 \cdot \pi \cdot \sigma^2_t}}.
 \end{equation*}
@@ -51,19 +57,19 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 ніж максимізація добутку кількох десятків тисяч або мільйонів значень
 \begin{equation*}
   \begin{split}
-    \mathbb{P}_I\left( t \;\middle|\; x \right)
-    &= \ln{\delta x^{w \cdot h}} +
-        \sum_{i \in I}
-        \left\{
-          - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
-          - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
-        \right\}, \\
     \mathbb{P}_X\left( x \right)
     &= \ln{\delta x^n} +
         \sum_{i = 1}^n
         \left\{
           - \frac{x_i^2}{2}
           - \frac{\ln{2} + \ln{\pi}}{2}
+        \right\}, \\
+    \mathbb{P}_Y\left( t \;\middle|\; x \right)
+    &= \ln{\delta x^{w \cdot h}} +
+        \sum_{i \in I}
+        \left\{
+          - \frac{ y_i^2}{2 \cdot \sigma^2}
+          - \frac{\ln{2} + \ln{\pi} + \ln{\sigma^2}}{2}
         \right\}.
   \end{split}
 \end{equation*}
@@ -73,7 +79,7 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 \begin{equation*}
   \sum_{i \in I}
     \left\{
-      - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
+      - \frac{ y_i^2}{2 \cdot \sigma^2}
       - \frac{\ln{\sigma^2}}{2}
     \right\}
   - \sum_{i = 1}^n \frac{x_i^2}{2}
@@ -82,7 +88,7 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 Помножимо на $-2$ та винесемо логарифм дисперсії за знак суми
 \begin{equation}\label{eq:minimize}
   w \cdot h \cdot \ln{\sigma^2}
-  + \sum_{i \in I} \frac{\left( t_i - f_i\left( x \right) \right)^2}{\sigma^2}
+  + \sum_{i \in I} \frac{ y_i^2}{\sigma^2}
   + \sum_{i = 1}^n x_i^2
   \to \min\limits_{x \in X}.
 \end{equation}
@@ -95,7 +101,7 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
     \frac{\sum\limits_{i = 1}^n x_i^2}
          {w \cdot h \cdot \ln{\sigma^2}
           + \sum\limits_{i \in I}
-            \frac{\left( t_i - f_i\left( x \right) \right)^2}{\sigma^2}}
+            \frac{ y_i^2}{\sigma^2}}
   \right|
   < \varepsilon.
 \end{equation*}
@@ -103,12 +109,12 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 \begin{equation*}
   \frac{\sum\limits_{i = 1}^n x_i^2}{\varepsilon \cdot w \cdot h}
   < \left| \ln\sigma^2
-    + \frac{\sum\limits_{i \in I} \left( t_i - f_i\left( x \right) \right)^2}
+    + \frac{\sum\limits_{i \in I} y_i^2}
            {\sigma^2 \cdot w \cdot h}
    \right|.
 \end{equation*}
 Права частина містить суму, яка дорівнює оцінці дисперсії
-діленій на реальну дисперсію шума.
+діленій на реальну дисперсію шуму.
 Вважаємо, що оцінка має достатньо елементів,
 щоб сума була приблизно рівною одиниці
 \begin{equation*}
@@ -159,7 +165,7 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 \begin{equation*}
   w \cdot h
   \cdot \ln{
-    \frac{\sum\limits_{i \in I}\left( t_i - f_i\left( x \right) \right)^2}
+    \frac{\sum\limits_{i \in I} y_i^2}
          {w \cdot h - 1}}
   + w \cdot h - 1
   + \sum_{i = 1}^n x_i^2
@@ -198,10 +204,9 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 
 Знехтуємо ймовірністю параметрів $x$
 \begin{equation*}
-  \overline{\left\| t - f\left( x \right) \right\|^2}
-  \to \min\limits_{x \in X}.
+  \widetilde{y}^2 \to \min\limits_{x \in X}.
 \end{equation*}
-Помножимо на $w \cdot h$.
+Помножимо на $\left( w \cdot h - 1 \right)$.
 Отримали мінімізацію відомої цільової функції --- суми квадратів відхилень
 \begin{equation*}
   \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2
