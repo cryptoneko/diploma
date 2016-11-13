@@ -27,89 +27,190 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 зі стороною $\delta x$ і вважати,
 що коли величина потрапляє на територію певного гіперкубу,
 то вона дорівнює значенню в його центрі.
-Позначимо
+
+Відомо, що параметри $x$ --- набори коефіцієнтів нормованих головних компонент,
+тобто мають стандартний гаусовий розподіл.
+Ймовірність того, що було згенеровано саме такий набір
 \begin{equation*}
-  \mathbb{P}_I\left( x \;\middle|\; t \right)
-  = \mathbb{P}_I\left( \xi = x \;\middle|\; t \right)
-  = \mathbb{P}\left( \xi \in \left[ x - \frac{\delta x}{2};
-                                    x + \frac{\delta x}{2} \right]
-    \;\middle|\; t \right)
-  \approx p\left( x \;\middle|\; t \right) \cdot \delta x^n.
+  \mathbb{P}_X\left( x \right)
+  = \delta x^n \cdot \prod_{i=1}^n
+    \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
 
-Вважаємо, що на даному зображенні $t$
-присутній нормальний шум з невідомою дисперсією $\sigma^2_t$.
-Тоді ймовірність того,
-що дане зображення було отримано саме з параметрами $x$
+Ймовірність того, що обличчя на даному зображенні отримано з параметрами $x$
 \begin{equation*}
-  \mathbb{P}_I\left( x \;\middle|\; t \right)
-  = \delta x^n \cdot \prod_{i \in I}
+  \mathbb{P}_I\left( t \;\middle|\; x \right)
+  = \delta x^{w \cdot h} \cdot \prod_{i \in I}
     \frac{\exp{\left\{- \frac{\left( t_i - f_i\left( x \right) \right)^2}
            {2 \cdot \sigma^2_t} \right\}}}
            {\sqrt{2 \cdot \pi \cdot \sigma^2_t}}.
 \end{equation*}
-Коли з контексту буде зрозуміло,
-якому саме зображенню належить дана дисперсія,
-індекс $t$ не будемо використовувати.
 
-Максимізуємо логарифм ймовірності,
+Для максимізації розглянемо логарифми ймовірностей,
 тому що це зручніше,
 ніж максимізація добутку кількох десятків тисяч або мільйонів значень
 \begin{equation*}
-  \ln{\mathbb{P}_I\left( x \mid t \right)}
-  = \ln{\delta x^n} + \sum_{i \in I}
+  \begin{split}
+    \mathbb{P}_I\left( t \;\middle|\; x \right)
+    &= \ln{\delta x^{w \cdot h}} +
+        \sum_{i \in I}
+        \left\{
+          - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
+          - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
+        \right\}, \\
+    \mathbb{P}_X\left( x \right)
+    &= \ln{\delta x^n} +
+        \sum_{i = 1}^n
+        \left\{
+          - \frac{x_i^2}{2}
+          - \frac{\ln{2} + \ln{\pi}}{2}
+        \right\}.
+  \end{split}
+\end{equation*}
+Приберемо константні доданки,
+що не впливають на результат максимізації ймовірності
+появи даного зображення $t$ з даними параметрами $x$
+\begin{equation*}
+  \sum_{i \in I}
     \left\{
       - \frac{\left( t_i - f_i\left( x \right) \right)^2}{2 \cdot \sigma^2}
-      - \frac{\ln{2} + \ln{\pi} + 2 \cdot \ln{\sigma}}{2}
+      - \frac{\ln{\sigma^2}}{2}
     \right\}
-  \to \max.
+  - \sum_{i = 1}^n \frac{x_i^2}{2}
+  \to \max\limits_{x \in X}.
 \end{equation*}
-Позбуваємося константного доданку та помножимо на подвоєну ненульову дисперсію
-\begin{equation*}
-  \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2 \to \min.
-\end{equation*}
-Бачимо,
-що мінімізація суми квадратів різниць між дійсним та згенерованим зображенням
-розв'язує задачу з бінарною функцією втрат
-та гаусовим шумом на зображенні без інших додаткових умов,
-які буде розглянуто далі.
+Помножимо на $-2$ та винесемо логарифм дисперсії за знак суми
+\begin{equation}\label{eq:minimize}
+  w \cdot h \cdot \ln{\sigma^2}
+  + \sum_{i \in I} \frac{\left( t_i - f_i\left( x \right) \right)^2}{\sigma^2}
+  + \sum_{i = 1}^n x_i^2
+  \to \min\limits_{x \in X}.
+\end{equation}
 
-Введемо множину пікселів $F \subset I$,
-які на зображенні $f\left( x \right)$ належать обличчю.
-Тоді суму можно розбити на дві
+Відомо, що $n$ набагато менше за $w \cdot h$.
+Визначимо, за яких умов можна знехтувати ймовірністю набору параметрів $x$.
+Для деякого $\varepsilon$ повинна виконуватись нерівність
+\begin{equation*}
+  \left|
+    \frac{\sum\limits_{i = 1}^n x_i^2}
+         {w \cdot h \cdot \ln{\sigma^2}
+          + \sum\limits_{i \in I}
+            \frac{\left( t_i - f_i\left( x \right) \right)^2}{\sigma^2}}
+  \right|
+  < \varepsilon.
+\end{equation*}
+Розв'яжемо цю нерівність відносно дисперсії шуму
+\begin{equation*}
+  \frac{\sum\limits_{i = 1}^n x_i^2}{\varepsilon \cdot w \cdot h}
+  < \left| \ln\sigma^2
+    + \frac{\sum\limits_{i \in I} \left( t_i - f_i\left( x \right) \right)^2}
+           {\sigma^2 \cdot w \cdot h}
+   \right|.
+\end{equation*}
+Права частина містить суму, яка дорівнює оцінці дисперсії
+діленій на реальну дисперсію шума.
+Вважаємо, що оцінка має достатньо елементів,
+щоб сума була приблизно рівною одиниці
+\begin{equation*}
+  \frac{\sum\limits_{i = 1}^n x_i^2}{\varepsilon \cdot w \cdot h}
+  < \left| \ln\sigma^2 + 1 \right|.
+\end{equation*}
+Потрібно позбутися модуля.
+Якщо $\ln\sigma^2 + 1 > 0$, то
+\begin{equation*}
+  \sigma^2 > e^{-1} \approx 0.37.
+\end{equation*}
+Це завеликий шум, який сильно спотворить зображення,
+тому не будемо розглядати цей випадок.
+Отримали нерівність
+\begin{equation*}
+  - \frac{\sum\limits_{i = 1}^n x_i^2}{\varepsilon \cdot w \cdot h} - 1
+  > \ln\sigma^2.
+\end{equation*}
+Візьмемо експоненту від обох частин
+\begin{equation*}
+  \sigma^2
+  < \exp{\left\{
+      - \frac{\sum\limits_{i = 1}^n x_i^2}
+             {\varepsilon \cdot w \cdot h}
+      - 1
+    \right\}}.
+\end{equation*}
+Перепишемо суму квадратів параметрів моделі як їх середнє помножене на кількість
+\begin{equation*}
+  \sigma^2
+  < \exp{\left\{
+      - \frac{n \cdot \overline{\left\| x \right\|^2}}
+             {\varepsilon \cdot w \cdot h}
+      - 1
+    \right\}}.
+\end{equation*}
+Для зображеннь,
+що використовуються на практиці,
+дріб буде приймати настільки мале значення,
+що їм можна знехтувати
+\begin{equation*}
+  \sigma^2 < e^{- 1}.
+\end{equation*}
+Це означає, що внеском ймовірності параметрів $x$ теж можна знехтувати
+на не зовсім малих зображеннях (наприклад, $500 \times 500$).
+
+Повернемося до \eqref{eq:minimize} та замінимо дисперсію на її оцінку
+\begin{equation*}
+  w \cdot h
+  \cdot \ln{
+    \frac{\sum\limits_{i \in I}\left( t_i - f_i\left( x \right) \right)^2}
+         {w \cdot h - 1}}
+  + w \cdot h - 1
+  + \sum_{i = 1}^n x_i^2
+  \to \min\limits_{x \in X}.
+\end{equation*}
+Позбавимося константних доданків та поділимо все на розмір зображення
+\begin{equation*}
+  \ln{\sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2}
+  + \frac{\sum\limits_{i = 1}^n x_i^2}{w \cdot h}
+  \to \min\limits_{x \in X}.
+\end{equation*}
+В загальному випадку зображення містить не тільки обличчя.
+Генерація усіх можливих фонів для кожної моделі є недоцільною.
+Потрібно отримати формулу,
+яка не прив'язана до кожного пікселя вхідного зображення $t$.
+Для цього віднімемо логарифм розміру зображення.
+Це константа, тому не вплине на кінцевий розв'язок
+\begin{equation*}
+  \ln{\frac{\sum\limits_{i \in I} \left( t_i - f_i\left( x \right) \right)^2}
+           {w \cdot h}}
+  + \frac{\sum\limits_{i = 1}^n x_i^2}{w \cdot h}
+  \to \min\limits_{x \in X}.
+\end{equation*}
+Перепишемо через середнє
+\begin{equation*}
+  w \cdot h \cdot \ln{\overline{\left\| t - f\left( x \right) \right\|^2}}
+  + n \cdot \overline{\left\| x \right\|^2}
+  \to \min\limits_{x \in X}.
+\end{equation*}
+Можна брати середнє значення шуму по тим пікселям,
+де на згенерованому зображенні знаходиться обличчя.
+Оскільки вважається, що накладений шум ---
+це набір незалежних випадкових однаково розподілених величин,
+середнє будь-якої їх сукупності
+буде оптимальною оцінкою математичного очікування їх.
+
+Знехтуємо ймовірністю параметрів $x$
+\begin{equation*}
+  \overline{\left\| t - f\left( x \right) \right\|^2}
+  \to \min\limits_{x \in X}.
+\end{equation*}
+Помножимо на $w \cdot h$.
+Отримали мінімізацію відомої цільової функції --- суми квадратів відхилень
 \begin{equation*}
   \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2
-  = \sum_{i \in F} \left( t_i - f_i\left( x \right) \right)^2
-  + \sum_{i \in I \setminus F} \left( t_i - f_i\left( x \right) \right)^2.
+  \to \min\limits_{x \in X}.
 \end{equation*}
-Рахуємо вибірковую дисперсію для тієї частини зображення,
-де зображено обличчя
-\begin{equation*}
-  \overline{\sigma_F^2}
-  = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( x \right) \right)^2}
-    {\left| F - 1 \right|}.
-\end{equation*}
-Екстраполюємо це значення на все зображення
-\begin{equation*}
-  \overline{\sigma_F^2}
-  \approx \frac{\sum\limits_{i \in I}
-             \left( t_i - f_i\left( x \right) \right)^2}
-            {\left| I \right| - 1}.
-\end{equation*}
-Тоді вираз, який треба мінімізувати, можна представити як
-\begin{equation*}
-  \sum_{i \in I} \left( t_i - f_i\left( x \right) \right)^2
-  \approx \left( \left| I \right| - 1 \right) \cdot \overline{\sigma_F^2}
-  \to \min.
-\end{equation*}
-Оскільки розмір зображення фіксований і його зменшити не вийде,
-потрібно зменшити вибіркову дисперсію на пікселях обличчя
-\begin{equation*}
-  \overline{\sigma_F^2}
-  = \frac{\sum\limits_{i \in F} \left( t_i - f_i\left( x \right) \right)^2}
-         {\left| F - 1 \right|}
-  \to \min.
-\end{equation*}
+Мінімізація суми квадратів різниць між дійсним та згенерованим зображенням
+розв'язує задачу з бінарною або інтервальною функцією штрафу
+та гаусовим шумом на зображенні без додаткових умов
+на кшталт розподілу параметрів $x$.
 
 \subsection{Різниця параметрів з урахуванням їх гаусового розподілу}
 
