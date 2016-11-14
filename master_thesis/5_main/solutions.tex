@@ -234,36 +234,58 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
   \mathbb{P}\left( x, t \right)
   = \mathbb{P}_I\left( t \mcond x \right)
     \cdot \mathbb{P}_X\left( x \right)
-    = \delta x^{n + w \cdot h} \cdot \prod_{i \in I}
-    \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
-         {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma_t^2}}
-    \cdot
-    \prod_{i=1}^n
-    \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
+  = \delta x^{n + w \cdot h} \cdot \prod_{i \in I}
+  \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
+       {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma_t^2}}
+  \cdot
+  \prod_{i=1}^n
+  \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
-
-Винесемо константи з добутків та позначимо
-\begin{equation*}
-  c_t = \left( 2 \cdot \pi \right)^{-\frac{w \cdot h + n}{2}}
-    \cdot \sigma_t^{- w \cdot h}.
-\end{equation*}
-Ймовірність приймає вигляд
+Винесемо константи з добутків
 \begin{equation*}
   \mathbb{P}\left( x, t \right)
-  = c_t \cdot \delta x^{2 \cdot n}
-    \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
-                              {2 \cdot \sigma^2} \right\}}
-    \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}.
+  = \left( \frac{\delta x}{\sqrt{2 \cdot \pi}} \right)^{n + w \cdot h}
+    \cdot \prod_{i \in I}
+    \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
+         {2 \cdot \sigma_t^2} \right\}}}{\sqrt{\sigma_t^2}}
+    \cdot
+    \prod_{i=1}^n
+    \exp{\left( - \frac{x_i^2}{2} \right)}.
+\end{equation*}
+Замінимо дисперсію на її оцінку
+\begin{equation*}
+  \mathbb{P}\left( x, t \right)
+  = \left( \frac{\delta x}{\sqrt{2 \cdot \pi}} \right)^{n + w \cdot h}
+    \cdot \exp{\left\{ \frac{w \cdot h - 1}{2} \right\}}
+    \cdot \left( \frac{w \cdot h - 1}
+                      {\left\| t - f\left( x \right) \right\|^2}
+          \right)^{w \cdot h}
+    \cdot
+    \exp{\left( - \frac{\left\| x \right\|^2}{2} \right)}.
+\end{equation*}
+Введемо константу
+\begin{equation*}
+  c_t = \frac{
+      \left( 2 \cdot \pi \right)^{- \frac{n + w \cdot h}{2}}
+      \cdot \exp{\left\{ \frac{w \cdot h - 1}{2} \right\}}
+      \cdot \left( w \cdot h - 1 \right)^{w \cdot h}
+    }{\mathbb{P}\left( t \right)}
+\end{equation*}
+Ймовірність певного набору параметрів $x$ на даному зображенні $t$
+\begin{equation*}
+  \mathbb{P}\left( x \mcond t \right)
+  = c_t \cdot \delta x^{n + w \cdot h}
+    \cdot \left\| t - f\left( x \right) \right\|^{- 2 \cdot w \cdot h}
+    \cdot \exp{\left( - \frac{\left\| x \right\|^2}{2} \right)}.
 \end{equation*}
 Стратегія розпізнавання
 \begin{equation*}
   q^* \left( t \right)
-  = c_t \cdot \delta x^{2 \cdot n}
+  = c_t \cdot \delta x^{n + w \cdot h}
     \cdot \sum_{x \in X}
       x
-      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
-                                {2 \cdot \sigma^2} \right\}}
-    \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}.
+      \cdot \left\| t - f\left( x \right) \right\|^{- 2 \cdot w \cdot h}
+      \cdot \exp{\left( - \frac{\left\| x \right\|^2}{2} \right)}.
 \end{equation*}
 У неперервному випадку сума змінюється на інтеграл та зникають об'єми гіперкубів
 \begin{equation*}
@@ -271,16 +293,7 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
   = c_t
     \cdot \int\limits_{x \in X}
       x
-      \cdot \exp{\left\{ - \frac{\left\| t - f\left( x \right) \right\|^2}
-                                {2 \cdot \sigma^2} \right\}}
-      \cdot \exp{\left\{ - \frac{\left\| x \right\|^2}{2} \right\}}
+      \cdot \left\| t - f\left( x \right) \right\|^{- 2 \cdot w \cdot h}
+      \cdot \exp{\left( - \frac{\left\| x \right\|^2}{2} \right)}
     d\,x.
-\end{equation*}
-
-Оскільки $\sigma^2$ невідома,
-її можна оцінити за відомою формулою оптимальної оцінки дисперсії
-\begin{equation*}
-  \overline{\sigma^2}
-  = \sum_{x \in X}
-    \frac{\left\| f\left( x \right) - t \right\|^2}{w \cdot h \cdot n - 1}.
 \end{equation*}
