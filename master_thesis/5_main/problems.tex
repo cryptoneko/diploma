@@ -119,6 +119,19 @@ $2^{8 \cdot 10^4} \approx 10^{24 \cdot 10^3}$
     W \left( x, q\left( t \right) \right)
     d F\left( t, x \right).
 \end{equation*}
+Можна переписати через умовне математичне очікування
+\begin{equation*}
+  q^*\left( t \right)
+  = \argmin_{q \in Q}
+    \Mean{W\left( x, q\left( t \right) \right) \mcond t }
+    \cdot \mathbb{P}\left( t \right).
+\end{equation*}
+Константний множник не впливає на розв'язок
+\begin{equation*}
+  q^*\left( t \right)
+  = \argmin_{q \in Q}
+    \Mean{W\left( x, q\left( t \right) \right) \mcond t}.
+\end{equation*}
 
 \subsection{Бінарна функція витрат}
 
@@ -306,6 +319,10 @@ $2^{8 \cdot 10^4} \approx 10^{24 \cdot 10^3}$
   q^*\left( t \right)
   = \frac{\int\limits_{X} x dF\left( t, x \right)}{\mathbb{P}\left( t \right)}.
 \end{equation*}
+У вигляді умовного математичного очікування
+\begin{equation*}
+  q^*\left( t \right) = \Mean{x \mcond t}.
+\end{equation*}
 
 Ділення на ймовірність появи зображення $t$ можна сприймати як нормування
 при використанні чисельних методів розрахунку даного інтегралу.
@@ -358,6 +375,10 @@ $2^{8 \cdot 10^4} \approx 10^{24 \cdot 10^3}$
 \begin{equation*}
   q^*\left( t \right)
   = \frac{\int\limits_{X} x dF\left( t, x \right)}{\mathbb{P}\left( t \right)}.
+\end{equation*}
+Оптимальна стратегія як умовне математичне очікування
+\begin{equation*}
+  q^*\left( t \right) = \Mean{x \mcond t}.
 \end{equation*}
 
 Отримана та ж стратегія,
