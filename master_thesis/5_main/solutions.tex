@@ -1,11 +1,6 @@
 \section{Розв'язок}
 
-\subsection{Інтервальна функція витрат}
-
-Розглянемо функцію витрат,
-за якої вірним є будь-який набір параметрів,
-що знаходиться в $\delta$-околі дійсного набору $x$,
-а за всі інші сплачується штраф $1$.
+\subsection{Дискретизація простору параметрів}
 
 Дискретизуємо простір параметрів $X$.
 Введемо невелике $\delta x$ таке,
@@ -51,6 +46,19 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
            {2 \cdot \sigma^2_t} \right\}}}
            {\sqrt{2 \cdot \pi \cdot \sigma^2_t}}.
 \end{equation*}
+
+Сумісна ймовірність зображення $t$ та параметрів $x$
+\begin{equation*}
+  \mathbb{P}\left( x, t \right)
+  = \mathbb{P}_I\left( x, t \right) \cdot \mathbb{P}_X\left( x, t \right)
+\end{equation*}
+
+\subsection{Інтервальна функція витрат}
+
+Розглянемо функцію витрат,
+за якої вірним є будь-який набір параметрів,
+що знаходиться в $\delta$-околі дійсного набору $x$,
+а за всі інші сплачується штраф $1$.
 
 Для максимізації розглянемо логарифми ймовірностей,
 тому що це зручніше,
@@ -219,41 +227,20 @@ $\left[ x - \frac{\delta x}{2}; x + \frac{\delta x}{2} \right]$,
 
 \subsection{Різниця параметрів}
 
-Вважаємо, що на даному зображенні $t$
-присутній нормальний шум з невідомою дисперсією $\sigma^2_t$.
-Ймовірність того, що зображення моделі з конкретними параметрами $x$
-є очищеним від шумів зображенням $t$
-\begin{equation*}
-  \mathbb{P}_I\left( x \mid t \right)
-  = \delta x^n \cdot \prod_{i \in I}
-    \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
-    {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma^2}}.
-\end{equation*}
-Відомо, що параметри $x$ --- набори коефіцієнтів нормованих головних компонент,
-тобто мають стандартний гаусовий розподіл.
-Ймовірність того, що було згенеровано саме такий набір
-\begin{equation*}
-  \mathbb{P}_X\left( x \mid t \right)
-  = \delta x^n \cdot \prod_{i=1}^n
-    \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
-\end{equation*}
 Ймовірність того,
 що дане зображення $t$ було отримано саме з параметрами $x$,
 є добутком розглянутих ймовірностей
 \begin{equation*}
-  \mathbb{P}\left( x \mid t \right)
-  = \mathbb{P}_I\left( x \mid t \right)
-    \cdot \mathbb{P}_X\left( x \mid t \right)
-    = \delta x^{2 \cdot n} \cdot \prod_{i \in I}
+  \mathbb{P}\left( x, t \right)
+  = \mathbb{P}_I\left( t \mcond x \right)
+    \cdot \mathbb{P}_X\left( x \right)
+    = \delta x^{n + w \cdot h} \cdot \prod_{i \in I}
     \frac{\exp{\left\{ - \frac{\left( t_i - f_i\left( x \right) \right)^2}
          {2 \cdot \sigma_t^2} \right\}}}{\sqrt{2 \cdot \pi \cdot \sigma_t^2}}
     \cdot
     \prod_{i=1}^n
     \frac{\exp{\left( - \frac{x_i^2}{2} \right)}}{\sqrt{2 \cdot \pi}}.
 \end{equation*}
-Коли з контексту буде зрозуміло,
-якому саме зображенню належить дана дисперсія,
-індекс $t$ не будемо використовувати.
 
 Винесемо константи з добутків та позначимо
 \begin{equation*}
