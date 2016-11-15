@@ -20,25 +20,26 @@
 стандартного гаусового $n$-вимірного вектора
 \begin{equation*}
   q^* \left( t \right)
-  = \left( 2 \cdot \pi \cdot \sigma^2 \right)^{-\frac{w \cdot h}{2}}
-    \cdot M_{\xi}\left[
+  = c_t
+    \cdot \Meanof{\xi}{
       \xi
-      \cdot \exp{\left\{ - \frac{\left\| t - f\left( \xi \right) \right\|^2}
-        {2 \cdot \sigma^2} \right\}} \right], \qquad
+      \cdot \exp{\left\{
+          - \frac{\left\| t - f\left( \xi \right) \right\|^2}
+                 {2 \cdot \sigma^2}
+            \right\}}}, \qquad
     \xi_i \sim \mathcal{N}\left( 0, 1 \right).
 \end{equation*}
 Внесемо все в експоненту для полегшення машинних обчислень
 \begin{equation*}
   q^* \left( t \right)
-  = M_{\xi}\left[
+  = \Meanof{\xi}{
     \frac{\xi}{\left| \xi \right|}
     \cdot \exp{\left\{
         \ln{\left| \xi \right|}
         - \frac{\left\| t - f\left( \xi \right) \right\|^2}{2 \cdot \sigma^2}
-        - \frac{w \cdot h}{2}
-          \cdot \left( \ln{2} + \ln{\pi} + \ln{\sigma^2} \right)
+        + \ln{c_t}
        \right\}
-    } \right].
+    }}.
 \end{equation*}
 
 Для отримання оцінки інтегралу
@@ -56,11 +57,32 @@
   = \frac{\xi^{\left( i \right)}}{\left| \xi^{\left( i \right)} \right|}
   \cdot \exp{\left\{
       \ln{\left| \xi^{\left( i \right)} \right|}
-      - \frac{\left\| t - f\left( \xi^{\left( i \right)} \right) \right\|^2}{2 \cdot \sigma^2}
-      - \frac{w \cdot h}{2}
-        \cdot \left( \ln{2} + \ln{\pi} + \ln{\sigma^2} \right)
+      - \frac{\left\| t - f\left( \xi^{\left( i \right)} \right) \right\|^2}
+             {2 \cdot \sigma^2}
+      + \ln{c_t}
      \right\}
    }.
+\end{equation*}
+Значення константи $c_t$ визначимо з умови нормування
+\begin{equation*}
+  c_t \cdot
+  \sum_{i=1}^{N}
+    \exp{\left\{
+      \frac{\left\| t - f\left( \xi^{\left( i \right)} \right) \right\|^2}
+           {2 \cdot \sigma^2}
+       + \frac{\left\| \xi^{\left( i \right)} \right\|^2}{2}
+     \right\}}
+  = 1.
+\end{equation*}
+Явний вигляд
+\begin{equation*}
+  c_t
+  = \frac{1}{\sum\limits_{i=1}^{N}
+    \exp{\left\{
+      \frac{\left\| t - f\left( \xi^{\left( i \right)} \right) \right\|^2}
+           {2 \cdot \sigma^2}
+      + \frac{\left\| \xi^{\left( i \right)} \right\|^2}{2}
+    \right\}}}.
 \end{equation*}
 Оцінкою інтегралу буде середнє значення
 \begin{equation*}
